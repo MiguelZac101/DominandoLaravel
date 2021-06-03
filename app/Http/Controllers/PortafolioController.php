@@ -13,7 +13,20 @@ class PortafolioController extends Controller
      */
     //php artisan make:controller PortafolioController -i
     //es para cuando el controlador solo tiene una función
+    /*
     public function __invoke(Request $request)
+    {
+        $portafolio = [
+            ['title' => 'Proyecto #1'],
+            ['title' => 'Proyecto #2'],
+            ['title' => 'Proyecto #3'],
+            ['title' => 'Proyecto #4'],
+        ];
+
+        return view('portafolio', compact('portafolio'));
+    }
+    */
+    public function index()
     {
         $portafolio = [
             ['title' => 'Proyecto #1'],

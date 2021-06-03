@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PortafolioController;
+use App\Http\Controllers\CursosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,13 @@ use App\Http\Controllers\PortafolioController;
 
 Route::view('/','home' )->name('home');
 Route::view('/about','about' )->name('about');
-Route::get('/portafolio',PortafolioController::class)->name('portafolio');
+//Route::get('/portafolio',PortafolioController::class)->name('portafolio');
+Route::get('/portafolio',[PortafolioController::class, 'index'])->name('portafolio');
+
 Route::view('/contact','contact' )->name('contact');
+
+//resource
+Route::resource('Cursos', CursosController::class)->only('index');
 
 Route::get('/enviarvariables', function () {
     $nombre = "Miguel";
