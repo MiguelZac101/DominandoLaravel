@@ -13,14 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return "hola";//view('welcome');
-});
+Route::get('contactame', function () {
+    return "Sección de contactos";
+})->name('contactos');
 
-Route::get('contacto', function () {
-    return "contacto";
-});
-//parametro opcional ?
-Route::get('saludo/{nombre?}', function ($nombre="invitado") {
-    return "saludo".$nombre;
+Route::get('/', function () {
+    echo "<a href='".route('contactos')."'>Contactanos 1</a>";
 });
