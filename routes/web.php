@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('contactame', function () {
-    return "Sección de contactos";
-})->name('contactos');
+Route::view('/','home' )->name('home');
+Route::view('/about','about' )->name('about');
+Route::view('/portafolio','portafolio' )->name('portafolio');
+Route::view('/contact','contact' )->name('contact');
 
-Route::get('/', function () {
-    echo "<a href='".route('contactos')."'>Contactanos 1</a>";
-});
+Route::get('/enviarvariables', function () {
+    $nombre = "Miguel";
+    //formas de enviar variables
+    return view('home',compact('nombre')); // compact('nombre') -> ['nombre' => $nombre]
+    //return view('home',['nombre' => $nombre]);
+    //return view('home')->with(['nombre' => $nombre]);
+    //return view('home')->with('nombre',$nombre);
+})->name('home');
