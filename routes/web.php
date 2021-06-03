@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PortafolioController;
 use App\Http\Controllers\CursosController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::view('/about','about' )->name('about');
 Route::get('/portafolio',[PortafolioController::class, 'index'])->name('portafolio');
 
 Route::view('/contact','contact' )->name('contact');
+Route::post('/contact',[MessageController::class, 'store']);
 
 //resource
 Route::resource('Cursos', CursosController::class)->only('index');
