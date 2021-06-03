@@ -2,7 +2,7 @@
     {{dump(request()->path())}}
     <ul>
         <li class="{{setActive('home')}}">
-            <a href="/">Home</a>
+            <a href="/">@lang('Home')</a>
         </li>
         <li class="{{setActive('about')}}">
             <a href="/about">about</a>
@@ -11,7 +11,7 @@
             <a href="/portafolio">portafolio</a>
         </li>
         <li class="{{request()->routeIs('contact')?'active':''}}">
-            <a href="/contact">contact</a>
+            <a href="/contact">@lang('Contact')</a>
         </li>
     </ul>
 </nav>

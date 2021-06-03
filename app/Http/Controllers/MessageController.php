@@ -11,6 +11,9 @@ class MessageController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => ['required','email']
+        ],[
+            'name.required' => __('I need your name'),
+            'email.required' => 'Email requerido',
         ]);
         return "Datos validados";
     }
