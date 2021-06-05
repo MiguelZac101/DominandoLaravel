@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Project;
+
 class PortafolioController extends Controller
 {
     /**
@@ -11,30 +13,14 @@ class PortafolioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    //php artisan make:controller PortafolioController -i
-    //es para cuando el controlador solo tiene una función
-    /*
-    public function __invoke(Request $request)
-    {
-        $portafolio = [
-            ['title' => 'Proyecto #1'],
-            ['title' => 'Proyecto #2'],
-            ['title' => 'Proyecto #3'],
-            ['title' => 'Proyecto #4'],
-        ];
-
-        return view('portafolio', compact('portafolio'));
-    }
-    */
+    
     public function index()
     {
-        $portafolio = [
-            ['title' => 'Proyecto #1'],
-            ['title' => 'Proyecto #2'],
-            ['title' => 'Proyecto #3'],
-            ['title' => 'Proyecto #4'],
-        ];
+        //$portafolio = DB::table('projects')->get();
+        //$portafolio = Project::orderBy('created_at','DESC')->get();
+        //$portafolio = Project::latest()->get();//igual q orderBy x created:at
+        $projects = Project::latest()->paginate(1);
 
-        return view('portafolio', compact('portafolio'));
+        return view('portafolio', compact('projects'));
     }
 }

@@ -1,24 +1,18 @@
 @extends('layout')
 @section('title','Portafolio') 
 @section('content')
-    <h1>Portafolio</h1>  
+    <h1>Projects</h1>  
     <ul>        
-        @forelse($portafolio as $item)
-            <pre>{{var_dump($loop)}}</pre><!--loop: trae información del loop-->
-            <li>{{$item['title']}} <pre>{{$loop->last?'es el último':''}}</pre></li>
+        @forelse($projects as $item)            
+            <li>
+                {{$item->title}}<br>
+                <small>{{$item->descripcion}}</small><br>
+                {{$item->created_at->format('Y-m-d')}}<br>
+                {{$item->created_at->diffForHumans()}}<br>
+            </li>
         @empty
             <li>No hay proyectos</li>
         @endforelse
     </ul>
-<!--
-    otros 
-    @@for()
-    @@endfor
-
-    @@while()
-    @@endwhile
-
-    @@switch($type)        
-    @@endswitch
--->
+    {{$projects->links()}}
 @endsection
