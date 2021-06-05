@@ -29,6 +29,21 @@ class ProjectController extends Controller
             //'project' => Project::findorFail($id)
             'project' => $project
         ]);
-        
+    }
+
+    public function create(){
+        return view('projects.create');       
+    }
+
+    public function store(Request $request){
+        //si los nombres de los input coinciden con los nombres de la tabla
+        //Project::create($request->all());
+        Project::create([
+            'title' => $request->get('title'),
+            'url' => $request->get('url'),
+            'descripcion' => $request->get('descripcion')
+        ]);
+
+        return redirect()->route('projects.index');
     }
 }
