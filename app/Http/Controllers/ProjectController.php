@@ -24,9 +24,10 @@ class ProjectController extends Controller
         return view('projects.index', compact('projects'));
     }
 
-    public function show($id){
+    public function show(Project $project){
         return view('projects.show',[
-            'project' => Project::findorFail($id)
+            //'project' => Project::findorFail($id)
+            'project' => $project
         ]);
         
     }
