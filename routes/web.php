@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PortafolioController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\MessageController;
 
@@ -17,12 +17,13 @@ use App\Http\Controllers\MessageController;
 */
 
 Route::view('/','home' )->name('home');
-Route::view('/about','about' )->name('about');
+Route::view('/quienes-somos','about' )->name('about');
 //Route::get('/portafolio',PortafolioController::class)->name('portafolio');
-Route::get('/portafolio',[PortafolioController::class, 'index'])->name('portafolio');
+Route::get('/portafolio',[ProjectController::class, 'index'])->name('projects.index');
+Route::get('/portafolio/{id}',[ProjectController::class, 'show'])->name('projects.show');
 
-Route::view('/contact','contact' )->name('contact');
-Route::post('/contact',[MessageController::class, 'store']);
+Route::view('/contacto','contact' )->name('contact');
+Route::post('/contact',[MessageController::class, 'store'])->name('messages.store');
 
 //resource
 Route::resource('Cursos', CursosController::class)->only('index');

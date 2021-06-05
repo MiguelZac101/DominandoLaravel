@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Project;
 
-class PortafolioController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -21,6 +21,13 @@ class PortafolioController extends Controller
         //$portafolio = Project::latest()->get();//igual q orderBy x created:at
         $projects = Project::latest()->paginate(1);
 
-        return view('portafolio', compact('projects'));
+        return view('projects.index', compact('projects'));
+    }
+
+    public function show($id){
+        return view('projects.show',[
+            'project' => Project::findorFail($id)
+        ]);
+        
     }
 }
