@@ -38,11 +38,20 @@ class ProjectController extends Controller
     public function store(Request $request){
         //si los nombres de los input coinciden con los nombres de la tabla
         //Project::create($request->all());
+        /*
         Project::create([
             'title' => $request->get('title'),
             'url' => $request->get('url'),
             'descripcion' => $request->get('descripcion')
         ]);
+        */        
+        //Project::create($request()->only('title','url','descripcion'));
+        $fields = request()->validate([
+            'title' => 'required',
+            'url' => 'required',
+            'descripcion' => 'required'
+        ]);
+        Project::create($fields);
 
         return redirect()->route('projects.index');
     }
