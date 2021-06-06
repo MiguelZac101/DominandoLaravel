@@ -24,7 +24,7 @@ class MessageController extends Controller
         ]);
 
         Mail::to('maqzac@yahoo.es')->queue(new MensajeRecibido($data));
-        return "mensaje enviado";
+        return back()->with('status','Recibimos tu mensaje, te responderemos en menos de 24 horas.');
 
         //para visualizar en navegador
         //return new MensajeRecibido($data);

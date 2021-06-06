@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title','Portafolio') 
 @section('content')
-    <h1>Nuevo proyecto</h1>  
+    <h1>Nuevo proyecto</h1> 
 
     @include('parts.errores')
 

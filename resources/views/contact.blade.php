@@ -2,6 +2,7 @@
 @section('title','Contact') 
 @section('content')
     <h1>@lang('Contact')</h1>  
+
     <form method="POST" action="{{ route('messages.store')}}">
         @csrf
         <input type="text" name="name" value="{{ old('name') }}" placeholder="Nombre..."><br>

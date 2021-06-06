@@ -2,6 +2,11 @@
 @section('title','Portafolio') 
 @section('content')
     <h1>Projects</h1>  
+
+    @if(session('status'))
+        {{session('status')}}
+    @endif
+
     <a href="{{route('projects.create')}}">Nuevo Proyecto</a>
     <ul>        
         @forelse($projects as $project)            

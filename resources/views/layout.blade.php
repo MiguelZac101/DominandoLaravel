@@ -14,6 +14,7 @@
 </head>
 <body>
     @include('parts.nav')
+    @include('parts.session-status')
     @yield('content')    
 </body>
 </html>
