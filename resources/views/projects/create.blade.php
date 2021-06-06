@@ -3,22 +3,9 @@
 @section('content')
     <h1>Nuevo proyecto</h1>  
 
-    @if($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error )
-                <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    @endif
+    @include('parts.errores')
 
     <form method="POST" action="{{ route('projects.store')}}">
-        @csrf
-        <input type="text" name="title" value="{{ old('title') }}" placeholder="title..."><br>        
-
-        <input type="text" name="url" value="{{ old('url') }}" placeholder="url..."><br>        
-
-        <textarea name="descripcion" id="" cols="30" rows="10">{{ old('descripcion') }}</textarea><br>
-
-        <button>@lang('Send')</button>
+        @include('projects._form',['textBoton'=>"Guardar"])
     </form> 
 @endsection
