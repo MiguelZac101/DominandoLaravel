@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Project;
 
+use App\Http\Requests\CreateProjectRequest;
+
 class ProjectController extends Controller
 {
     /**
@@ -35,7 +37,7 @@ class ProjectController extends Controller
         return view('projects.create');       
     }
 
-    public function store(Request $request){
+    public function store(CreateProjectRequest $request){
         //si los nombres de los input coinciden con los nombres de la tabla
         //Project::create($request->all());
         /*
@@ -46,12 +48,14 @@ class ProjectController extends Controller
         ]);
         */        
         //Project::create($request()->only('title','url','descripcion'));
+        /*
         $fields = request()->validate([
             'title' => 'required',
             'url' => 'required',
             'descripcion' => 'required'
         ]);
-        Project::create($fields);
+        */
+        Project::create($request->validated());
 
         return redirect()->route('projects.index');
     }

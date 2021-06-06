@@ -2,6 +2,15 @@
 @section('title','Portafolio') 
 @section('content')
     <h1>Nuevo proyecto</h1>  
+
+    @if($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error )
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <form method="POST" action="{{ route('projects.store')}}">
         @csrf
         <input type="text" name="title" value="{{ old('title') }}" placeholder="title..."><br>        
