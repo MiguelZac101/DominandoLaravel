@@ -59,4 +59,23 @@ class ProjectController extends Controller
 
         return redirect()->route('projects.index');
     }
+
+    public function edit(Project $project){
+        return view('projects.edit',[            
+            'project' => $project
+        ]);
+    }
+    //considerar q se puede utilizar CreateProjectRequest tanto para crear como para actualizar
+    public function update(CreateProjectRequest $request,Project $project){
+        /*
+        $project->update([
+            'title' => $request->get('title'),
+            'url' => $request->get('url'),
+            'descripcion' => $request->get('descripcion')
+        ]);
+        */
+        $project->update($request->validated());
+
+        return redirect()->route('projects.show',$project);
+    }
 }
